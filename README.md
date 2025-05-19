@@ -1,0 +1,39 @@
+# Puntua tareas
+
+Este es un proyecto que permite poner notas a las tareas de un módulo profesional por parte de gente anónima.
+
+## Estado del arte
+
+Existen diferente competencia a este proyecto como:
+
+- Strawpoll
+- 
+
+Estas webs tienen uno de estos problemas en su versión gratuita:
+
+- No tienen una encuesta para que introduzcan un número. Por ejemplo: ¿Cuántas horas has dedicado a este módulo?
+- No tienen la posibilidad de embeber la encuesta en una web.
+- No tienen la posibilidad de analizar los resultados de una manera cómoda.
+
+Debido a estas necesidades se desarrolla este proyecto.
+
+## Set up
+
+Para iniciar este proyecto deberás ejecutar los siguientes comandos descritos en <https://laravel.com/docs/12.x/installation>.
+
+## Base de datos
+
+Tablas:
+
+- Users
+  - Regular
+  - Admin
+- Roles
+- Permissions
+- QuestionGroup
+- Question
+  - Input Number
+  - Single Choice
+  - Stars
+- Response
+
