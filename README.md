@@ -7,7 +7,11 @@ Este es un proyecto que permite poner notas a las tareas de un módulo profesion
 Existen diferente competencia a este proyecto como:
 
 - Strawpoll
-- 
+- Google Forms
+- PollMaker
+- Doodle
+- Mentimeter
+- SurveyMonkey
 
 Estas webs tienen uno de estos problemas en su versión gratuita:
 
@@ -36,4 +40,3 @@ Tablas:
   - Single Choice
   - Stars
 - Response
-
