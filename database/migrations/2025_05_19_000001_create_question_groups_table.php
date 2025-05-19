@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('question_groups', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 150);
+            $table->text('description')->max(400);
             $table->timestamps();
         });
     }

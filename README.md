@@ -25,6 +25,12 @@ Debido a estas necesidades se desarrolla este proyecto.
 
 Para iniciar este proyecto deberás ejecutar los siguientes comandos descritos en <https://laravel.com/docs/12.x/installation>.
 
+```ps
+npm install
+npm run build
+php artisan migrate --seed
+```
+
 ## Base de datos
 
 Tablas:
