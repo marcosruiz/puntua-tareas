@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Response extends Model
+class Option extends Model
 {
     //
     use HasFactory;
@@ -16,7 +16,7 @@ class Response extends Model
         return $this->belongsTo(Question::class);
     }
 
-    public function response(){
-        return $this->belongsTo(Option::class);
+    public function responses(){
+        return $this->hasMany(Response::class);
     }
 }
