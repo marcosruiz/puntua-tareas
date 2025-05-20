@@ -56,8 +56,21 @@ Para reiniciar la base de datos con los seeeders:
 php artisan migrate:fresh --seed
 ```
 
+Para crear seeder:
+
+```console
+php artisan make:seeder RolesSeeder
+```
+
+TODO Para aplicar los seeders:
+
+```console
+php artisan seed
+```
+
 Para arrancar el proyecto:
 
 ```console
 composer run dev
 ```
+
