@@ -36,7 +36,8 @@ Tablas:
 - Permissions
 - QuestionGroup
 - Question
-  - Input Number
+  - Number
+    - Int
+    - Double
   - Single Choice
-  - Stars
 - Response
