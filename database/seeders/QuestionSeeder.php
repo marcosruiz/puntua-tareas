@@ -18,6 +18,7 @@ class QuestionSeeder extends Seeder
         Question::factory()->create([
             'title' => 'Mi primera pregunta',
             'description' => '¿Qué relación Eloquent se utiliza para representar que un post puede tener muchos comentarios?',
+            'question_group_id' => 1
         ]);
     }
 }

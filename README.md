@@ -47,3 +47,17 @@ Tablas:
     - Double
   - Single Choice
 - Response
+
+## Comandos habituales
+
+Para reiniciar la base de datos con los seeeders:
+
+```console
+php artisan migrate:fresh --seed
+```
+
+Para arrancar el proyecto:
+
+```console
+composer run dev
+```

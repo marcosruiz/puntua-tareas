@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\QuestionGroup;
+use App\Models\Response;
 
-class QuestionGroupSeeder extends Seeder
+class ResponseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,8 @@ class QuestionGroupSeeder extends Seeder
     {
         //
 
-        QuestionGroup::factory()->create([
-            'title' => 'Mi primer grupo de preguntas',
-            'description' => 'Descripción',
-            'user_id' => 1,
+        Response::factory()->create([
+            'option_id' => 1
         ]);
     }
 }

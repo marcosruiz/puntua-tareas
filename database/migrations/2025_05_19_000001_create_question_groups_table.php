@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title', 150);
             $table->text('description')->max(400);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

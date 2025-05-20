@@ -11,10 +11,6 @@ class Question extends Model
 
     protected $guarded = [];
 
-    public function responses(){
-        return $this->hasMany(Response::class);
-    }
-
     public function options(){
         return $this->hasMany(Option::class);
     }
