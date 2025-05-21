@@ -29,7 +29,13 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </div>
             </div>
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
-                <PlaceholderPattern />
+                <p> Hola mundo! </p>
+                 
+                <button v-if="$page.props.user.permissions.includes('create roles')" class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]">Manage roles</button>
+
+                <br>
+
+                <button  v-if="$page.props.user.permissions.includes('create questiongroup')" class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]">Manage category groups</button>
             </div>
         </div>
     </AppLayout>

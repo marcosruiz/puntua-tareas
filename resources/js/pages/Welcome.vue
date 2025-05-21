@@ -69,6 +69,8 @@ import { Head, Link } from '@inertiajs/vue3';
                             </span>
                             <span>
                                 Crea una encuesta
+
+                                {{ $page.props }}
                             </span>
                         </li>
                         <li

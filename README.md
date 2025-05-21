@@ -27,8 +27,27 @@ Para iniciar este proyecto deberás ejecutar los siguientes comandos descritos e
 
 ```ps
 npm install
+composer install
 npm run build
-php artisan migrate --seed
+php artisan key:generate
+```
+
+Creamos la base de datos con los datos de `.env`:
+
+```console
+php artisan migrate:fresh --seed
+```
+
+Para tener el cambio en caliente:
+
+```console
+npm run dev
+```
+
+Para arrancar el proyecto
+
+```console
+php artisan serve
 ```
 
 ## Base de datos
@@ -68,9 +87,16 @@ TODO Para aplicar los seeders:
 php artisan seed
 ```
 
+
+
+Para instalar todo lo que haya en el composer.json:
+
+```console
+composer install
+```
+
 Para arrancar el proyecto:
 
 ```console
 composer run dev
 ```
-
