@@ -100,3 +100,7 @@ Para arrancar el proyecto:
 ```console
 composer run dev
 ```
+
+Me he quedado aqui en el tutorial
+
+<https://youtu.be/FhRlQu8dUVk?si=zZynCi-G0I3-vjQN&t=1404>
