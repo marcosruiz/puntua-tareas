@@ -87,8 +87,6 @@ TODO Para aplicar los seeders:
 php artisan seed
 ```
 
-
-
 Para instalar todo lo que haya en el composer.json:
 
 ```console

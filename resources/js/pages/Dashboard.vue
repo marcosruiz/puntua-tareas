@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/vue3';
+import { Head }  from '@inertiajs/vue3';
 import PlaceholderPattern from '../components/PlaceholderPattern.vue';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -32,10 +32,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <p> Hola mundo! </p>
                  
                 <button v-if="$page.props.user.permissions.includes('create roles')" class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]">Manage roles</button>
-
-                <br>
-
-                <button  v-if="$page.props.user.permissions.includes('create questiongroup')" class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]">Manage category groups</button>
+                
             </div>
         </div>
     </AppLayout>

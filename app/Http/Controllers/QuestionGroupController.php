@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\QuestionGroup;
+use Inertia\Response;
 
 class QuestionGroupController extends Controller
 {
@@ -13,6 +15,9 @@ class QuestionGroupController extends Controller
     public function index()
     {
         //
+
+        $questionGroup = QuestionGroup::paginate(25);
+        return inertia('questiongroups/Index', ['questionGroups' => $questionGroup]);
     }
 
     /**
