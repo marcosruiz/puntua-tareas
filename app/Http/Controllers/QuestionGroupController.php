@@ -25,7 +25,7 @@ class QuestionGroupController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('questiongroups/Create');
     }
 
     /**

@@ -2,7 +2,7 @@
 
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
-import { Head, usePage, Link } from '@inertiajs/vue3';
+import { Head, usePage, Link, router } from '@inertiajs/vue3';
 import { Folder } from 'lucide-vue-next';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -14,7 +14,18 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const page = usePage();
 
-console.log(page.props.questionGroups.data)
+defineProps({
+  questionGroups: {
+    type: Object,
+    required: true,
+  },
+});
+
+const deleteQuestionGroup = (id: number) => {
+  if (confirm('Are you sure?')) {
+    router.delete(route('question-groups.delete', id));
+  }
+};
 
 </script>
 
@@ -38,7 +49,7 @@ console.log(page.props.questionGroups.data)
       <h2>Category groups</h2>
 
       <ul role="list" class="divide-y divide-gray-100">
-        <li v-for="group in $page.props.questionGroups.data" :key="group.id" class="flex flex-col">
+        <li v-for="group in questionGroups.data" :key="group.id" class="flex flex-col">
           <div class="flex justify-between gap-x-6 py-5">
 
             <div class="flex min-w-0 gap-x-4">
@@ -54,13 +65,13 @@ console.log(page.props.questionGroups.data)
             </div>
 
             <div class="flex flex-row items-center justify-center gap-1">
-              <Link v-if="$page.props.user.permissions.includes('create questiongroup')"
-                :href="route('question-groups.create')"
+              <Link v-if="$page.props.user.permissions.includes('edit questiongroup')"
+                :href="route('question-groups.edit', group.id)"
                 class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]">
               Edit
               </Link>
-              <Link v-if="$page.props.user.permissions.includes('create questiongroup')"
-                :href="route('question-groups.create')"
+              <Link v-if="$page.props.user.permissions.includes('delete questiongroup')"
+                @click="deleteQuestionGroup(group.id)"
                 class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]">
               Delete
               </Link>
