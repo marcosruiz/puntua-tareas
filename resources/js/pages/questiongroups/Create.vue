@@ -8,7 +8,7 @@ export default {
 
 import { useForm } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
-import QuestionGroupForm from '@/Components/QuestionGroup/Form.vue';
+import QuestionGroupForm from '@/components/questiongroups/Form.vue';
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -31,8 +31,7 @@ const form = useForm({
     <AppLayout :breadcrumbs="breadcrumbs">
 
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-            Crear grupo de preguntas
-            <QuestionGroupForm :form="form" @submit="form.post(route('questiongroup.store'))"/>
+            <QuestionGroupForm :form="form" @submit="form.post(route('questiongroups.store'))"/>
         </div>
 
     </AppLayout>

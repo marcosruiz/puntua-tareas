@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 export default {
     name: 'QuestionGroupForm',
 };
@@ -27,13 +27,10 @@ defineEmits(['submit']);
 </script>
 
 <template>
-    <AppLayout>
-        <div>
-            {{ updating ? 'Update Question Group' : 'Create Question Group' }}
-        </div>
-
-        <Input v-model="form.title" placeholder="Enter title" />
-        <Input v-model="form.description" placeholder="Enter description" />
-        
-    </AppLayout>
+        <form @submit.prevent="$emit('submit')">
+            <h2>{{ updating ? 'Update Question Group' : 'Create Question Group' }}</h2>
+            <Input v-model="form.title" placeholder="Enter title" class="mt-4"/>
+            <Input v-model="form.description" placeholder="Enter description" class="mt-4"/>
+            <Button type="submit" class="mt-4">Enviar</Button>
+        </form>
 </template>
