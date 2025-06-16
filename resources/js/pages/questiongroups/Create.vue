@@ -31,7 +31,7 @@ const form = useForm({
     <AppLayout :breadcrumbs="breadcrumbs">
 
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-            <QuestionGroupForm :form="form" @submit="form.post(route('questiongroups.store'))"/>
+            <QuestionGroupForm :form="form" @submit="form.post(route('question-groups.store'))"/>
         </div>
 
     </AppLayout>

@@ -9,8 +9,9 @@ import { useForm } from '@inertiajs/vue3';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/AppLayout.vue';
+import InputError from '../InputError.vue';
 
-defineProps({
+const props = defineProps({
     form: {
         type: Object,
         required: true,
@@ -27,10 +28,12 @@ defineEmits(['submit']);
 </script>
 
 <template>
+    <h2>{{ updating ? 'Update Question Group' : 'Create Question Group' }}</h2>
         <form @submit.prevent="$emit('submit')">
-            <h2>{{ updating ? 'Update Question Group' : 'Create Question Group' }}</h2>
-            <Input v-model="form.title" placeholder="Enter title" class="mt-4"/>
-            <Input v-model="form.description" placeholder="Enter description" class="mt-4"/>
-            <Button type="submit" class="mt-4">Enviar</Button>
+            <Input id="title" v-model="form.title" placeholder="Ex: My title" class="mt-4"/>
+            <InputError :message="$page.props.errors.title" class="mt-2"/>
+            <Input id="description" v-model="form.description" placeholder="Ex: My description" class="mt-4"/>
+            <InputError :message="$page.props.errors.description" class="mt-2"/>
+            <Button type="submit" class="mt-4" v-if="$page.props.user.permissions.includes('create questiongroup')">{{ updating ? 'Update' : 'Create' }}</Button>
         </form>
 </template>

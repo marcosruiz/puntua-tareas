@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\QuestionGroup;
 use Inertia\Response;
+use App\Http\Requests\QuestionGroupRequest;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionGroupController extends Controller
 {
@@ -30,10 +32,15 @@ class QuestionGroupController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @param App\Http\Requests\QuestionGroupRequest
+     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionGroupRequest $request)
     {
-        //
+        //QuestionGroup::create($request->validated());
+        Auth::user()->questionGroups()->create($request->validated());
+        return redirect()->route('question-groups.index')->with('success', 'Question group created or updated successfully.');
     }
 
     /**
