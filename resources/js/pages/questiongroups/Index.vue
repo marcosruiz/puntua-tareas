@@ -72,12 +72,12 @@ const deleteQuestionGroup = (id: number) => {
                 Edit
               </Link>
               
-              <Link v-if="$page.props.user.permissions.includes('delete questiongroup')"
+              <Button v-if="$page.props.user.permissions.includes('delete questiongroup')"
                 @click="deleteQuestionGroup(group.id)"
                 class="rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-white bg-red-600 hover:bg-red-800 transition-all hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b] flex flex-row items-center align-middle gap-2">
                   <Trash :size="16" />
                   Delete
-              </Link>
+              </Button>
             </div>
 
           </div>

@@ -17,7 +17,7 @@ class QuestionGroupController extends Controller
     public function index()
     {
         define('NUMBER_OF_ITEMS_PER_PAGE', 25);
-        $questionGroup = QuestionGroup::where('user_id', auth()->id())->paginate(NUMBER_OF_ITEMS_PER_PAGE);
+        $questionGroup = QuestionGroup::where('user_id', Auth::id())->paginate(NUMBER_OF_ITEMS_PER_PAGE);
         return inertia('questiongroups/Index', ['questionGroups' => $questionGroup]);
     }
 
