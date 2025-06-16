@@ -16,9 +16,8 @@ class QuestionGroupController extends Controller
      */
     public function index()
     {
-        //
-
-        $questionGroup = QuestionGroup::paginate(25);
+        define('NUMBER_OF_ITEMS_PER_PAGE', 25);
+        $questionGroup = QuestionGroup::where('user_id', auth()->id())->paginate(NUMBER_OF_ITEMS_PER_PAGE);
         return inertia('questiongroups/Index', ['questionGroups' => $questionGroup]);
     }
 
@@ -54,24 +53,31 @@ class QuestionGroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(QuestionGroup $questionGroup)
     {
-        //
+        return inertia('questiongroups/Edit', ['questionGroup' => $questionGroup]);
     }
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @param App\Http\Requests\QuestionGroupRequest
+     * @param App\Models\QuestionGroup
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, string $id)
+    public function update(QuestionGroupRequest $request, QuestionGroup $questionGroup)
     {
-        //
+        $questionGroup->update($request->validated());
+        return redirect()->route('question-groups.index')->with('success', 'Question group updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(QuestionGroup $questionGroup)
     {
-        //
+        $questionGroup->delete();
+        return redirect()->route('question-groups.index')->with('success', 'Question group deleted successfully.');
     }
 }

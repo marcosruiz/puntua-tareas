@@ -34,6 +34,7 @@ defineEmits(['submit']);
             <InputError :message="$page.props.errors.title" class="mt-2"/>
             <Input id="description" v-model="form.description" placeholder="Ex: My description" class="mt-4"/>
             <InputError :message="$page.props.errors.description" class="mt-2"/>
-            <Button type="submit" class="mt-4" v-if="$page.props.user.permissions.includes('create questiongroup')">{{ updating ? 'Update' : 'Create' }}</Button>
+            <Button type="submit" class="mt-4" v-if="!updating && $page.props.user.permissions.includes('create questiongroup')">Create</Button>
+            <Button type="submit" class="mt-4" v-if="updating && $page.props.user.permissions.includes('update questiongroup')">Update</Button>
         </form>
 </template>

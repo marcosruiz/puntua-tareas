@@ -27,7 +27,9 @@ class QuestionGroupRequest extends FormRequest
                 'required',
                 'string',
                 'max:255',
-                Rule::unique(table: 'question_groups', column: 'title')->ignore(id: request('questiongroup'), idColumn: 'id'),
+                Rule::unique(table: 'question_groups', column: 'title')
+                    ->where(fn ($query) => $query->where('user_id', auth()->id()))
+                    ->ignore(id: request('question_group'), idColumn: 'id'),
             ],
             'description' => [
                 'nullable',

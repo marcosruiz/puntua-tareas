@@ -3,7 +3,7 @@
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage, Link, router } from '@inertiajs/vue3';
-import { Folder } from 'lucide-vue-next';
+import { Folder, Trash, SquarePen, ArrowLeft, ArrowRight  } from 'lucide-vue-next';
 
 const breadcrumbs: BreadcrumbItem[] = [
   {
@@ -14,7 +14,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 const page = usePage();
 
-defineProps({
+const props = defineProps({
   questionGroups: {
     type: Object,
     required: true,
@@ -23,7 +23,7 @@ defineProps({
 
 const deleteQuestionGroup = (id: number) => {
   if (confirm('Are you sure?')) {
-    router.delete(route('question-groups.delete', id));
+    router.delete(route('question-groups.destroy', id));
   }
 };
 
@@ -65,23 +65,39 @@ const deleteQuestionGroup = (id: number) => {
             </div>
 
             <div class="flex flex-row items-center justify-center gap-1">
-              <Link v-if="$page.props.user.permissions.includes('edit questiongroup')"
+              <Link v-if="$page.props.user.permissions.includes('update questiongroup')"
                 :href="route('question-groups.edit', group.id)"
-                class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]">
-              Edit
+                class="rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b] flex flex-row items-center align-middle gap-2">
+                <SquarePen :size="16" />
+                Edit
               </Link>
+              
               <Link v-if="$page.props.user.permissions.includes('delete questiongroup')"
                 @click="deleteQuestionGroup(group.id)"
-                class="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]">
-              Delete
+                class="rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-white bg-red-600 hover:bg-red-800 transition-all hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b] flex flex-row items-center align-middle gap-2">
+                  <Trash :size="16" />
+                  Delete
               </Link>
             </div>
 
           </div>
 
         </li>
-
       </ul>
+
+      <div class="flex flex-row align-middle justify-between w-full">
+        <Link v-if="questionGroups.current_page > 1" :href="questionGroups.prev_page_url"
+          class="rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b] flex flex-row items-center align-middle gap-2">
+          <ArrowLeft :size="16" />
+          Previous
+        </Link>
+        <div></div>
+        <Link v-if="questionGroups.current_page < questionGroups.last_page" :href="questionGroups.next_page_url"
+          class="rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b] flex flex-row items-center align-middle gap-2">
+          Next
+          <ArrowRight :size="16" />
+        </Link>
+      </div>
 
     </div>
 
